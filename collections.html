@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Collections — Smile &amp; Nod</title>
+<meta name="description" content="Four curated card collections from Smile & Nod — Memory Timeline, Open-When Sets, Appreciation for Teams, and Just Because." />
+
+<style>
+/* ============================================================
+   SMILE & NOD — COLLECTIONS PAGE
+   Single-file: HTML + CSS + vanilla JS
+   ============================================================ */
+
+/* --- Design tokens ---------------------------------------- */
+:root {
+  --ivory:      #F7F1E8;
+  --cream:      #FBF6EE;
+  --blush:      #E9D2C5;
+  --clay:       #B98E72;
+  --clay-deep:  #8E6A52;
+  --taupe:      #C9B9A8;
+  --charcoal:   #2A2622;
+  --cocoa:      #4A3A2E;
+  --muted:      #7B6E62;
+  --line:       rgba(74, 58, 46, 0.12);
+  --shadow-sm:  0 1px 2px rgba(74,58,46,0.05), 0 4px 16px rgba(74,58,46,0.06);
+  --shadow-md:  0 8px 30px rgba(74,58,46,0.10);
+  --shadow-lg:  0 20px 60px rgba(74,58,46,0.14);
+  --radius-md:  18px;
+  --radius-lg:  28px;
+  --serif:      "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, "Times New Roman", serif;
+  --sans:       -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --script:     "Snell Roundhand", "Apple Chancery", "Lucida Handwriting", cursive;
+  --maxw:       1200px;
+}
+
+/* --- Base reset ------------------------------------------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--cocoa);
+  background: var(--ivory);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; }
+h1, h2, h3 {
+  font-family: var(--serif);
+  color: var(--charcoal);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+/* --- Layout ----------------------------------------------- */
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+
+/* ============================================================
+   HEADER / SECTION INTRO
+   ============================================================ */
+.page-header {
+  text-align: center;
+  padding: 90px 0 60px;
+  background:
+    radial-gradient(900px 400px at 50% 0%, rgba(233,210,197,0.5), transparent 70%),
+    var(--ivory);
+}
+.page-header .eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--clay);
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 18px;
+}
+.page-header h1 {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+.page-header h1 em {
+  font-family: var(--script);
+  font-style: italic;
+  color: var(--clay-deep);
+  font-weight: 400;
+}
+.page-header p {
+  max-width: 560px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+/* ============================================================
+   COLLECTIONS GRID — 2x2 desktop, 1 col mobile
+   ============================================================ */
+.collections {
+  padding: 40px 0 110px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+}
+@media (max-width: 760px) {
+  .grid { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* --- Card ------------------------------------------------- */
+.card {
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--line);
+  transition: transform .4s ease, box-shadow .4s ease;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+.card-img {
+  aspect-ratio: 4 / 3;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--blush), var(--taupe));
+}
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform .6s ease;
+}
+.card:hover .card-img img { transform: scale(1.03); }
+
+/* Placeholder shown when no matching image is found */
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  color: rgba(255,255,255,0.85);
+  background: linear-gradient(135deg, var(--blush), var(--clay));
+}
+.placeholder .mark {
+  font-family: var(--script);
+  font-size: 54px;
+  line-height: 1;
+}
+.placeholder .label {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.card-body { padding: 32px 32px 36px; flex: 1; display: flex; flex-direction: column; }
+.card-body h3 { font-size: 24px; margin-bottom: 10px; }
+.card-body p { color: var(--muted); font-size: 15px; margin-bottom: 22px; flex: 1; }
+.card-body .meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+}
+.card-body .meta .arrow { color: var(--clay-deep); font-size: 18px; transition: transform .3s ease; }
+.card:hover .card-body .meta .arrow { transform: translateX(4px); }
+
+/* ============================================================
+   FEEDBACK FORM
+   ============================================================ */
+.feedback {
+  padding: 100px 0;
+  background: var(--cream);
+  border-top: 1px solid var(--line);
+}
+.feedback-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.feedback h2 {
+  font-size: clamp(32px, 3.6vw, 44px);
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+.feedback h2 em {
+  font-family: var(--script);
+  font-style: italic;
+  color: var(--clay-deep);
+}
+.feedback .intro {
+  color: var(--muted);
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.feedback-form {
+  background: var(--ivory);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cocoa);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  background: var(--cream);
+  border-radius: 10px;
+  font: inherit;
+  color: var(--charcoal);
+  transition: border-color .25s ease, background .25s ease;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--clay);
+  background: var(--ivory);
+}
+.form-group textarea { min-height: 130px; resize: vertical; }
+
+.btn-submit {
+  width: 100%;
+  padding: 16px 30px;
+  background: var(--charcoal);
+  color: var(--ivory);
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 10px;
+  transition: background .25s ease, transform .25s ease;
+}
+.btn-submit:hover { background: var(--clay-deep); transform: translateY(-1px); }
+
+.form-note {
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 560px) { .feedback-form { padding: 28px 22px; } }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="page-header">
+  <div class="container">
+    <span class="eyebrow">Collections</span>
+    <h1>Four ways to hold a <em>moment</em>.</h1>
+    <p>Curated card collections from the Smile &amp; Nod studio — each one designed for a different kind of feeling, all of them built to be kept.</p>
+  </div>
+</header>
+
+<!-- ============================================================
+     COLLECTIONS GRID
+     Cards are rendered dynamically by JavaScript based on the
+     CATEGORIES array and filename-matching logic below.
+     ============================================================ -->
+<section class="collections">
+  <div class="container">
+    <div class="grid" id="collectionsGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEEDBACK FORM
+     Submits via mailto: to reneebolan@gmail.com
+     ============================================================ -->
+<section class="feedback">
+  <div class="container">
+    <div class="feedback-wrap">
+      <h2>Tell us what you <em>think</em>.</h2>
+      <p class="intro">Seen something you love? Something you'd like us to make? We read every note.</p>
+      <form class="feedback-form" id="feedbackForm" novalidate>
+        <div class="form-group">
+          <label for="fb-name">Your Name</label>
+          <input type="text" id="fb-name" name="name" required placeholder="Jane Morgan" />
+        </div>
+        <div class="form-group">
+          <label for="fb-email">Email</label>
+          <input type="email" id="fb-email" name="email" required placeholder="you@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="fb-message">Message</label>
+          <textarea id="fb-message" name="message" required placeholder="Share your thoughts..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Feedback</button>
+        <p class="form-note">Sends via your default email app.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* =============================================================
+   1. DATA: Category definitions + available image filenames
+   -------------------------------------------------------------
+   Each category has a title, description, and an array of
+   keywords. A filename that CONTAINS any of those keywords
+   (case-insensitive) will be matched to that category.
+   ============================================================= */
+
+// Category definitions — titles, descriptions, and matching keywords
+const CATEGORIES = [
+  {
+    title: "Memory Timeline",
+    description: "A life, bound in five cards. The first photo, the first home, the first promise — each its own panel, all of them yours.",
+    price: "From $185",
+    keywords: ["memory", "timeline"]
+  },
+  {
+    title: "Open-When Sets",
+    description: "Twelve sealed envelopes for the days ahead. \"Open when you miss me.\" \"Open when you doubt yourself.\" A gift of time.",
+    price: "From $128",
+    keywords: ["open", "when"]
+  },
+  {
+    title: "Appreciation for Teams",
+    description: "Thoughtful recognition at scale. Personalized cards for clients, hires, and milestones — without the corporate stiffness.",
+    price: "From $12 / card",
+    keywords: ["team", "appreciation", "teams"]
+  },
+  {
+    title: "Just Because",
+    description: "The ones sent for no reason at all — which, most of the time, are the ones that matter most.",
+    price: "From $28",
+    keywords: ["just", "because"]
+  }
+];
+
+// Available image filenames in the /images/ folder.
+// (In a larger app this list could be fetched from a server
+//  or generated at build time. Here it's a simple array.)
+const AVAILABLE_IMAGES = [
+  "Memory_Timeline.png",
+  "Open_When_Sets.png",
+  "Appreciation_for_Teams.png",
+  "Just_Because.png"
+];
+
+// Base path where all images live
+const IMAGE_BASE_PATH = "images/";
+
+
+/* =============================================================
+   2. IMAGE MATCHING LOGIC
+   -------------------------------------------------------------
+   For a given category, look through AVAILABLE_IMAGES and
+   return the first filename whose lowercase form contains
+   ANY of the category's keywords.
+   Returns null if no match is found (the UI will render a
+   styled placeholder instead of a broken image).
+   ============================================================= */
+function findImageForCategory(category, images) {
+  const match = images.find(filename => {
+    const lower = filename.toLowerCase();
+    // Return true if ANY keyword appears in the filename
+    return category.keywords.some(keyword => lower.includes(keyword.toLowerCase()));
+  });
+  // Return full path if matched, otherwise null
+  return match ? IMAGE_BASE_PATH + match : null;
+}
+
+
+/* =============================================================
+   3. RENDER THE CARD GRID
+   -------------------------------------------------------------
+   Loops through CATEGORIES, matches each one to an image via
+   findImageForCategory(), and inserts a card element into
+   #collectionsGrid. No image paths are hardcoded per section.
+   ============================================================= */
+function renderCollections() {
+  const grid = document.getElementById("collectionsGrid");
+  if (!grid) return;
+
+  // Build HTML for each category card
+  const cardsHTML = CATEGORIES.map(category => {
+    const imagePath = findImageForCategory(category, AVAILABLE_IMAGES);
+
+    // If image was matched, use <img>. Otherwise show a placeholder.
+    const imageMarkup = imagePath
+      ? `<img src="${imagePath}" alt="${category.title}"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+         <div class="placeholder" style="display:none;">
+           <div class="mark">S&amp;N</div>
+           <div class="label">Image unavailable</div>
+         </div>`
+      : `<div class="placeholder">
+           <div class="mark">S&amp;N</div>
+           <div class="label">Coming Soon</div>
+         </div>`;
+
+    return `
+      <article class="card">
+        <div class="card-img">
+          ${imageMarkup}
+        </div>
+        <div class="card-body">
+          <h3>${category.title}</h3>
+          <p>${category.description}</p>
+          <div class="meta">
+            <span>${category.price}</span>
+            <span class="arrow">→</span>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  grid.innerHTML = cardsHTML;
+}
+
+
+/* =============================================================
+   4. FEEDBACK FORM → mailto: submission
+   -------------------------------------------------------------
+   On submit, the form builds a properly URL-encoded mailto
+   link and opens the user's default mail client with the
+   subject and body pre-filled.
+   ============================================================= */
+function setupFeedbackForm() {
+  const form = document.getElementById("feedbackForm");
+  if (!form) return;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Pull form values
+    const name = document.getElementById("fb-name").value.trim();
+    const email = document.getElementById("fb-email").value.trim();
+    const message = document.getElementById("fb-message").value.trim();
+
+    // Basic validation — show a simple inline indication if blank
+    if (!name || !email || !message) {
+      alert("Please fill in your name, email, and message before sending.");
+      return;
+    }
+
+    // Construct the email body in plain text
+    // %0A is a URL-encoded newline (required inside mailto body)
+    const subject = encodeURIComponent("Website Feedback");
+    const body = encodeURIComponent(
+      "Name: " + name + "\n" +
+      "Email: " + email + "\n" +
+      "Message: " + message
+    );
+
+    // Assemble the mailto link and navigate to it,
+    // which prompts the OS to open the default mail client
+    const mailtoLink = "mailto:reneebolan@gmail.com?subject=" + subject + "&body=" + body;
+    window.location.href = mailtoLink;
+  });
+}
+
+
+/* =============================================================
+   5. INITIALIZE — run after DOM is ready
+   ============================================================= */
+document.addEventListener("DOMContentLoaded", function () {
+  renderCollections();
+  setupFeedbackForm();
+});
+</script>
+
+</body>
+</html>
