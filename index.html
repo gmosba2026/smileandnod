@@ -446,7 +446,7 @@ footer { background: var(--charcoal); color: var(--taupe); padding: 80px 0 32px;
 <nav class="nav">
   <div class="nav-inner">
     <a href="#" class="logo" aria-label="Smile & Nod home">
-      <img src="IMG_1410.jpeg" alt="Smile & Nod" />
+      <img loading="lazy" decoding="async" src="IMG_1410.jpeg" alt="Smile & Nod" />
     </a>
     <ul class="nav-links">
       <li><a href="#story">Story</a></li>
@@ -474,7 +474,7 @@ footer { background: var(--charcoal); color: var(--taupe); padding: 80px 0 32px;
         </div>
       </div>
       <div class="hero-image">
-        <img src="IMG_1414.jpeg" alt="A Smile & Nod handcrafted floral foil card" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <img loading="lazy" decoding="async" src="IMG_1414.jpeg" alt="A Smile & Nod handcrafted floral foil card" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
         <div class="fallback-mark" style="display:none;">Smile &amp; Nod</div>
         <div class="hero-badge">Handcrafted · Made in Small Batches</div>
       </div>
@@ -500,7 +500,7 @@ footer { background: var(--charcoal); color: var(--taupe); padding: 80px 0 32px;
   <div class="container">
     <div class="story-grid">
       <div class="story-image reveal">
-        <img src="IMG_1412.jpeg" alt="A handwritten Smile & Nod Mother's Day card" />
+        <img loading="lazy" decoding="async" src="IMG_1412.jpeg" alt="A handwritten Smile & Nod Mother's Day card" />
       </div>
       <div class="story-copy reveal">
         <span class="eyebrow">Our Story</span>
@@ -749,7 +749,7 @@ footer { background: var(--charcoal); color: var(--taupe); padding: 80px 0 32px;
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="brand-mark"><img src="IMG_1410.jpeg" alt="Smile & Nod" /></div>
+        <div class="brand-mark"><img loading="lazy" decoding="async" src="IMG_1410.jpeg" alt="Smile & Nod" /></div>
         <p>Personalized cards and keepsakes for the moments worth holding onto. Made slowly, in small batches, with care.</p>
       </div>
       <div><h4>Shop</h4><ul><li><a href="#collections">Milestone Series</a></li><li><a href="#collections">Custom Story</a></li><li><a href="#collections">Memory Timeline</a></li><li><a href="#collections">Open-When Sets</a></li><li><a href="#collections">Corporate</a></li></ul></div>
@@ -826,10 +826,10 @@ const CATEGORIES = [
 const AVAILABLE_IMAGES = [
   { file: "IMG_1414.jpeg", path: "" },
   { file: "IMG_1412.jpeg", path: "" },
-  { file: "Memory_Timeline.png", path: "images/" },
-  { file: "Open_When_Sets.png", path: "images/" },
-  { file: "Appreciation_for_Teams.png", path: "images/" },
-  { file: "Just_Because.png", path: "images/" }
+  { file: "Memory_Timeline.jpg", path: "images/" },
+  { file: "Open_When_Sets.jpg", path: "images/" },
+  { file: "Appreciation_for_Teams.jpg", path: "images/" },
+  { file: "Just_Because.jpg", path: "images/" }
 ];
 
 // Find first image whose filename contains any category keyword
@@ -849,7 +849,7 @@ function renderCollections() {
   grid.innerHTML = CATEGORIES.map(cat => {
     const src = findImageForCategory(cat);
     const imageMarkup = src
-      ? `<img src="${src}" alt="${cat.title}" onerror="this.style.display='none'"/>`
+      ? `<img loading="lazy" decoding="async" src="${src}" alt="${cat.title}" onerror="this.style.display='none'"/>`
       : `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--blush),var(--clay));color:#fff;font-family:var(--script);font-size:48px;">S&amp;N</div>`;
 
     return `
