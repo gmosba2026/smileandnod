@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Smile &amp; Nod — The Atelier of Remembered Things</title>
+<meta name="description" content="An editorial look at Smile & Nod — personalized cards and keepsakes, composed slowly." />
+
+<style>
+/* ============================================================
+   SMILE & NOD — EDITORIAL / BOUTIQUE DIRECTION
+   ============================================================ */
+
+:root {
+  --paper:      #F4EDE1;
+  --paper-2:    #EDE3D3;
+  --ivory:      #FBF6EC;
+  --blush:      #E8D0C1;
+  --clay:       #B88A6E;
+  --clay-deep:  #8A6448;
+  --cocoa:      #3B2E25;
+  --ink:        #1F1A15;
+  --muted:      #6F6355;
+  --rule:       rgba(31, 26, 21, 0.14);
+  --serif:      "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, "Times New Roman", serif;
+  --sans:       -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --script:     "Snell Roundhand", "Apple Chancery", "Lucida Handwriting", cursive;
+  --maxw:       1280px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--cocoa);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* --- Typography ------------------------------------------- */
+h1, h2, h3, h4 { font-family: var(--serif); color: var(--ink); font-weight: 400; letter-spacing: -0.01em; }
+.sans { font-family: var(--sans); }
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--clay-deep);
+  font-weight: 600;
+}
+.drop::first-letter {
+  font-family: var(--serif);
+  font-size: 78px;
+  float: left;
+  line-height: 0.85;
+  padding: 8px 14px 0 0;
+  font-style: italic;
+  color: var(--clay-deep);
+}
+.rule {
+  height: 1px;
+  background: var(--rule);
+  width: 100%;
+}
+.script {
+  font-family: var(--script);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--clay-deep);
+}
+
+/* --- Layout ---------------------------------------------- */
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
+section { padding: 120px 0; position: relative; }
+
+/* ============================================================
+   MASTHEAD — brand logo image centered
+   ============================================================ */
+.masthead {
+  border-bottom: 1px solid var(--rule);
+  padding: 16px 0;
+  background: var(--paper);
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  backdrop-filter: blur(10px);
+}
+.masthead-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.issue {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.wordmark {
+  text-align: center;
+  line-height: 0;
+}
+.wordmark img {
+  height: 68px;
+  width: auto;
+  margin: 0 auto;
+  display: block;
+  /* blend so the logo's cream background merges into the paper */
+  mix-blend-mode: multiply;
+}
+.topnav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 26px;
+}
+.topnav a {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cocoa);
+  transition: color .3s ease;
+  font-weight: 500;
+}
+.topnav a:hover { color: var(--clay-deep); }
+
+@media (max-width: 760px) {
+  .masthead-inner { grid-template-columns: 1fr; text-align: center; gap: 10px; }
+  .topnav { justify-content: center; flex-wrap: wrap; gap: 16px; }
+  .issue { text-align: center; }
+  .wordmark img { height: 54px; }
+}
+
+/* ============================================================
+   COVER / EDITORIAL HERO — image is the handwritten pink card
+   ============================================================ */
+.cover {
+  padding: 90px 0 60px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+  position: relative;
+}
+.cover-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 70px;
+  align-items: end;
+}
+.cover-copy { padding-bottom: 20px; }
+.cover-copy .kicker {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--clay-deep);
+  margin-bottom: 24px;
+  display: block;
+}
+.cover-copy h1 {
+  font-size: clamp(54px, 7.2vw, 120px);
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 30px;
+}
+.cover-copy h1 em {
+  font-family: var(--script);
+  font-style: italic;
+  color: var(--clay-deep);
+  font-size: 0.88em;
+  font-weight: 400;
+}
+.cover-copy .lede {
+  font-size: 19px;
+  color: var(--muted);
+  max-width: 520px;
+  line-height: 1.6;
+  margin-bottom: 36px;
+  font-style: italic;
+}
+.cover-meta {
+  display: flex;
+  gap: 36px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cover-meta strong { color: var(--ink); display: block; margin-bottom: 4px; font-weight: 600; }
+
+.cover-image {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--blush) 0%, var(--clay) 100%);
+}
+.cover-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.96) contrast(1.02);
+}
+.cover-image .caption {
+  position: absolute;
+  bottom: 0; left: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 14px 20px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+.cover-image .fallback {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--script);
+  font-size: 90px; color: rgba(255,255,255,0.75);
+}
+
+@media (max-width: 860px) {
+  .cover-grid { grid-template-columns: 1fr; gap: 40px; }
+  .cover { padding: 60px 0 40px; }
+}
+
+/* ============================================================
+   BUTTONS / LINKS
+   ============================================================ */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--ink);
+  transition: gap .3s ease, color .3s ease;
+  font-weight: 500;
+}
+.link-arrow:hover { gap: 16px; color: var(--clay-deep); border-color: var(--clay-deep); }
+.btn-ink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 34px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background .3s ease;
+}
+.btn-ink:hover { background: var(--clay-deep); }
+
+/* ============================================================
+   PULL QUOTE (Manifesto)
+   ============================================================ */
+.manifesto {
+  text-align: center;
+  padding: 140px 0;
+  background: var(--ivory);
+  border-bottom: 1px solid var(--rule);
+}
+.manifesto blockquote {
+  font-size: clamp(28px, 3.6vw, 46px);
+  line-height: 1.35;
+  max-width: 960px;
+  margin: 0 auto;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.manifesto blockquote em { font-family: var(--script); color: var(--clay-deep); font-style: italic; }
+.manifesto .attrib {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 40px;
+}
+
+/* ============================================================
+   EDITORIAL FEATURE (2-column with drop cap)
+   ============================================================ */
+.feature {
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+.feature-head {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 60px;
+  margin-bottom: 64px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--rule);
+}
+.feature-head .chapter {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--clay-deep);
+  padding-top: 16px;
+}
+.feature-head .chapter .num {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 44px;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.feature-head h2 {
+  font-size: clamp(38px, 4.4vw, 64px);
+  line-height: 1.08;
+  font-weight: 400;
+}
+.feature-head h2 em { font-family: var(--script); color: var(--clay-deep); font-style: italic; }
+
+.feature-body {
+  columns: 2;
+  column-gap: 60px;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--cocoa);
+}
+.feature-body p { margin-bottom: 20px; break-inside: avoid; }
+.feature-body p:first-child { font-size: 19px; }
+
+@media (max-width: 860px) {
+  .feature-head { grid-template-columns: 1fr; gap: 20px; }
+  .feature-body { columns: 1; }
+}
+
+/* ============================================================
+   THE CATALOG — real images in featured positions
+   ============================================================ */
+.catalog { background: var(--paper-2); border-bottom: 1px solid var(--rule); }
+.catalog-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 64px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+}
+.catalog-head h2 {
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 400;
+}
+.catalog-head h2 em { font-family: var(--script); color: var(--clay-deep); font-style: italic; }
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 28px;
+}
+.cat-item {
+  position: relative;
+  overflow: hidden;
+}
+.cat-item .frame {
+  aspect-ratio: 4 / 5;
+  background: var(--blush);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+.cat-item .frame img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.cat-item .frame .art {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--script);
+  font-size: 80px;
+  color: rgba(255,255,255,0.75);
+}
+.cat-item .num {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.cat-item h3 {
+  font-size: 26px;
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+.cat-item h3 em { font-family: var(--script); color: var(--clay-deep); font-style: italic; }
+.cat-item p {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+.cat-item .meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* Asymmetric spans */
+.span-7 { grid-column: span 7; }
+.span-5 { grid-column: span 5; }
+.span-4 { grid-column: span 4; }
+.span-8 { grid-column: span 8; }
+.span-6 { grid-column: span 6; }
+
+.bg-a { background: linear-gradient(135deg, #E8D0C1, #B88A6E); }
+.bg-b { background: linear-gradient(135deg, #F4EDE1, #E8D0C1); }
+.bg-c { background: linear-gradient(135deg, #B88A6E, #3B2E25); }
+.bg-d { background: linear-gradient(135deg, #EDE3D3, #B88A6E); }
+.bg-e { background: linear-gradient(135deg, #8A6448, #E8D0C1); }
+
+@media (max-width: 900px) {
+  .cat-grid { grid-template-columns: 1fr; }
+  .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 1; }
+  .catalog-head { flex-direction: column; align-items: flex-start; gap: 20px; }
+}
+
+/* ============================================================
+   THE CRAFT (process, slow editorial)
+   ============================================================ */
+.craft {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 140px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.craft h2, .craft h3 { color: var(--paper); }
+.craft .eyebrow { color: var(--blush); }
+.craft-head {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.craft-head h2 {
+  font-size: clamp(38px, 4.4vw, 64px);
+  font-weight: 400;
+  margin-top: 20px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.15;
+}
+.craft-head h2 em { font-family: var(--script); color: var(--blush); font-style: italic; }
+
+.craft-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  border-left: 1px solid rgba(255,255,255,0.12);
+}
+.craft-cell {
+  padding: 48px 36px;
+  border-right: 1px solid rgba(255,255,255,0.12);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  min-height: 260px;
+}
+.craft-cell .chapter {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 32px;
+  color: var(--blush);
+  margin-bottom: 24px;
+  display: block;
+}
+.craft-cell h3 { font-size: 22px; margin-bottom: 12px; font-weight: 400; }
+.craft-cell p { font-size: 15px; color: rgba(244,237,225,0.7); line-height: 1.6; }
+
+@media (max-width: 900px) { .craft-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .craft-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   IN CONVERSATION (Q&A / voice of brand)
+   ============================================================ */
+.convo {
+  background: var(--paper);
+  padding: 140px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.convo-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.convo-head {
+  text-align: center;
+  margin-bottom: 70px;
+}
+.convo-head h2 {
+  font-size: clamp(34px, 3.8vw, 52px);
+  margin-top: 20px;
+  font-weight: 400;
+}
+.convo-head h2 em { font-family: var(--script); color: var(--clay-deep); font-style: italic; }
+.exchange {
+  padding: 36px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.exchange .q {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--clay-deep);
+  margin-bottom: 16px;
+  display: block;
+  font-weight: 600;
+}
+.exchange .a {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--ink);
+  font-style: italic;
+}
+.exchange .a strong { font-style: normal; color: var(--clay-deep); }
+
+/* ============================================================
+   COLLECTOR'S NOTES (testimonials editorial)
+   ============================================================ */
+.notes { background: var(--ivory); padding: 140px 0; border-bottom: 1px solid var(--rule); }
+.notes-head { text-align: center; margin-bottom: 80px; }
+.notes-head h2 { font-size: clamp(34px, 3.8vw, 52px); margin-top: 20px; font-weight: 400; }
+.notes-head h2 em { font-family: var(--script); color: var(--clay-deep); font-style: italic; }
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+.note {
+  padding: 56px 48px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.note .region {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--clay-deep);
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+.note blockquote {
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+.note blockquote::before { content: "“"; font-size: 56px; line-height: 0; color: var(--clay); vertical-align: -24px; margin-right: 6px; font-family: var(--serif); }
+.note .byline {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.note .byline strong { color: var(--ink); font-weight: 600; }
+
+@media (max-width: 760px) { .notes-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   THE WRITING ROOM
+   ============================================================ */
+.writing {
+  background: var(--paper-2);
+  padding: 140px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.writing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+.writing h2 {
+  font-size: clamp(34px, 3.8vw, 52px);
+  margin-top: 20px;
+  margin-bottom: 26px;
+  font-weight: 400;
+}
+.writing h2 em { font-family: var(--script); color: var(--clay-deep); font-style: italic; }
+.writing p { color: var(--muted); font-size: 17px; margin-bottom: 24px; line-height: 1.7; }
+
+.writing .tones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.tone-chip {
+  padding: 10px 18px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cocoa);
+  background: var(--ivory);
+  cursor: pointer;
+  transition: background .25s ease, color .25s ease, border-color .25s ease;
+  font-weight: 500;
+}
+.tone-chip.active, .tone-chip:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.writing-card {
+  background: var(--ivory);
+  padding: 50px 44px;
+  border: 1px solid var(--rule);
+  position: relative;
+}
+.writing-card::before {
+  content: "";
+  position: absolute;
+  top: 16px; right: 16px; bottom: 16px; left: 16px;
+  border: 1px solid var(--rule);
+  pointer-events: none;
+}
+.writing-card .label {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--clay-deep);
+  margin-bottom: 22px;
+  display: block;
+  position: relative;
+  z-index: 1;
+  font-weight: 600;
+}
+.writing-card .composed {
+  font-size: 22px;
+  line-height: 1.6;
+  color: var(--ink);
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+  min-height: 180px;
+  transition: opacity .3s ease;
+}
+.writing-card .attr {
+  margin-top: 28px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 860px) { .writing-grid { grid-template-columns: 1fr; gap: 50px; } }
+
+/* ============================================================
+   RITUAL OF UNWRAPPING (pricing editorial)
+   ============================================================ */
+.ritual { background: var(--paper); padding: 140px 0; border-bottom: 1px solid var(--rule); }
+.ritual-head { text-align: center; margin-bottom: 80px; }
+.ritual-head h2 { font-size: clamp(36px, 4vw, 56px); margin-top: 20px; font-weight: 400; max-width: 720px; margin-left: auto; margin-right: auto; line-height: 1.15; }
+.ritual-head h2 em { font-family: var(--script); color: var(--clay-deep); font-style: italic; }
+.ritual-head p { color: var(--muted); max-width: 560px; margin: 20px auto 0; font-size: 16px; }
+
+.ritual-table {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--rule);
+  background: var(--ivory);
+}
+.ritual-col {
+  padding: 50px 36px;
+  border-right: 1px solid var(--rule);
+  position: relative;
+}
+.ritual-col:last-child { border-right: none; }
+.ritual-col.center {
+  background: var(--ink);
+  color: var(--paper);
+}
+.ritual-col.center h3, .ritual-col.center .amt { color: var(--paper); }
+.ritual-col.center .eyebrow { color: var(--blush); }
+.ritual-col .tag {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--clay-deep);
+  margin-bottom: 20px;
+  display: block;
+  font-weight: 600;
+}
+.ritual-col.center .tag { color: var(--blush); }
+.ritual-col h3 {
+  font-size: 30px;
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+.ritual-col h3 em { font-family: var(--script); color: var(--clay-deep); font-style: italic; }
+.ritual-col.center h3 em { color: var(--blush); }
+.ritual-col .amt {
+  font-size: 40px;
+  margin-bottom: 28px;
+  font-family: var(--serif);
+}
+.ritual-col .amt small { font-size: 13px; color: var(--muted); margin-left: 6px; font-family: var(--sans); letter-spacing: 0.14em; text-transform: uppercase; }
+.ritual-col.center .amt small { color: var(--blush); }
+.ritual-col ul {
+  list-style: none;
+  margin-bottom: 36px;
+}
+.ritual-col ul li {
+  padding: 12px 0;
+  font-size: 15px;
+  border-bottom: 1px solid var(--rule);
+}
+.ritual-col.center ul li { border-color: rgba(255,255,255,0.12); }
+.ritual-col ul li::before { content: "— "; color: var(--clay-deep); }
+.ritual-col.center ul li::before { color: var(--blush); }
+.ritual-col .btn-ink { width: 100%; }
+.ritual-col.center .btn-ink { background: var(--paper); color: var(--ink); }
+.ritual-col.center .btn-ink:hover { background: var(--blush); }
+
+@media (max-width: 860px) {
+  .ritual-table { grid-template-columns: 1fr; }
+  .ritual-col { border-right: none; border-bottom: 1px solid var(--rule); }
+  .ritual-col:last-child { border-bottom: none; }
+}
+
+/* ============================================================
+   INQUIRY (editorial form)
+   ============================================================ */
+.inquire {
+  background: var(--paper-2);
+  padding: 140px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.inquire-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
+  align-items: start;
+}
+.inquire h2 {
+  font-size: clamp(38px, 4.4vw, 58px);
+  margin-top: 20px;
+  margin-bottom: 28px;
+  font-weight: 400;
+  line-height: 1.12;
+}
+.inquire h2 em { font-family: var(--script); color: var(--clay-deep); font-style: italic; }
+.inquire p { color: var(--muted); font-size: 17px; margin-bottom: 32px; }
+.inquire .studio-info {
+  border-top: 1px solid var(--rule);
+  padding-top: 28px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+}
+.inquire .studio-info dl { display: grid; grid-template-columns: auto 1fr; gap: 14px 24px; }
+.inquire .studio-info dt {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--clay-deep);
+  font-size: 10px;
+  padding-top: 2px;
+  font-weight: 600;
+}
+.inquire .studio-info dd { color: var(--ink); font-family: var(--serif); font-size: 15px; letter-spacing: 0; }
+
+.editorial-form {
+  background: var(--ivory);
+  padding: 50px;
+  border: 1px solid var(--rule);
+}
+.ef-group { margin-bottom: 28px; border-bottom: 1px solid var(--rule); padding-bottom: 14px; }
+.ef-group:last-of-type { border-bottom: none; }
+.ef-group label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--clay-deep);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.ef-group input,
+.ef-group select,
+.ef-group textarea {
+  width: 100%;
+  padding: 6px 0 10px;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--ink);
+}
+.ef-group input:focus,
+.ef-group select:focus,
+.ef-group textarea:focus { outline: none; }
+.ef-group textarea { min-height: 90px; resize: vertical; }
+.ef-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.editorial-form .btn-ink { width: 100%; margin-top: 14px; }
+.ef-success {
+  display: none;
+  padding: 32px;
+  text-align: center;
+  border: 1px solid var(--clay);
+  background: var(--paper);
+}
+.ef-success.show { display: block; }
+.ef-success .script { font-size: 40px; display: block; margin-bottom: 10px; }
+.ef-success p { font-size: 16px; color: var(--cocoa); }
+
+@media (max-width: 860px) {
+  .inquire-grid { grid-template-columns: 1fr; gap: 50px; }
+  .editorial-form { padding: 32px 26px; }
+  .ef-row { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* ============================================================
+   COLOPHON (footer) — inverted logo
+   ============================================================ */
+.colophon {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 110px 0 40px;
+}
+.col-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 80px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.col-grid .brand-mark {
+  margin-bottom: 20px;
+  line-height: 0;
+}
+.col-grid .brand-mark img {
+  height: 76px;
+  width: auto;
+  filter: invert(1) brightness(1.08);
+  mix-blend-mode: screen;
+}
+.col-grid p { color: rgba(244,237,225,0.6); font-size: 15px; line-height: 1.7; max-width: 320px; }
+.col-grid h4 {
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  font-weight: 600;
+}
+.col-grid ul { list-style: none; }
+.col-grid ul li { margin-bottom: 12px; }
+.col-grid ul li a {
+  color: rgba(244,237,225,0.75);
+  font-size: 15px;
+  transition: color .25s ease;
+}
+.col-grid ul li a:hover { color: var(--paper); }
+
+.col-bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: rgba(244,237,225,0.5);
+}
+
+@media (max-width: 860px) {
+  .col-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+@media (max-width: 520px) {
+  .col-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Reveal animation
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     MASTHEAD — brand logo image
+     ============================================================ -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="issue">Volume i · The Keepsake Edition</div>
+    <a href="#" class="wordmark" aria-label="Smile & Nod">
+      <img src="IMG_1410.jpeg" alt="Smile & Nod" />
+    </a>
+    <nav class="topnav">
+      <a href="#manifesto">Manifesto</a>
+      <a href="#catalog">Catalog</a>
+      <a href="#craft">The Craft</a>
+      <a href="#writing">Writing Room</a>
+      <a href="#inquire">Inquire</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================================
+     COVER / EDITORIAL HERO — image is the handwritten pink card
+     ============================================================ -->
+<section class="cover">
+  <div class="container">
+    <div class="cover-grid">
+      <div class="cover-copy">
+        <span class="kicker">Spring Edition · No. 01</span>
+        <h1>The Atelier of <em>Remembered</em> Things.</h1>
+        <p class="lede">Personalized cards and keepsakes, composed slowly and finished by hand — built for the quiet moments most worth holding onto.</p>
+        <a href="#catalog" class="link-arrow">Enter the Catalog →</a>
+        <div class="cover-meta">
+          <div><strong>Founded</strong>A small studio</div>
+          <div><strong>Made</strong>Slowly, by hand</div>
+          <div><strong>For</strong>The ones who keep things</div>
+        </div>
+      </div>
+      <div class="cover-image">
+        <img src="IMG_1412.jpeg" alt="A handwritten Smile & Nod keepsake card" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="fallback" style="display:none;">S&amp;N</div>
+        <div class="caption">Pl. 01 · The Keepsake Card</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MANIFESTO / PULL QUOTE
+     ============================================================ -->
+<section class="manifesto" id="manifesto">
+  <div class="container">
+    <blockquote>
+      "We believe the right words, on the right paper, at the right moment, are a <em>small kind</em> of permanence — and that almost everything worth saying deserves to be said in something you can hold."
+    </blockquote>
+    <div class="attrib">The Smile &amp; Nod Manifesto</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EDITORIAL FEATURE — The Why
+     ============================================================ -->
+<section class="feature">
+  <div class="container">
+    <div class="feature-head">
+      <div class="chapter">
+        <span class="num">i.</span>
+        Chapter One
+      </div>
+      <h2>Every card we make begins with a single, specific <em>feeling</em>.</h2>
+    </div>
+    <div class="feature-body">
+      <p class="drop">There is a category of moment that doesn't quite fit inside a text message. A friend who held you up through something dark. A parent, finally retiring. The morning after the baby came home. These are not events, exactly. They are the emotional residue that events leave behind — and they deserve, we think, something you can put a hand on.</p>
+      <p>Smile &amp; Nod was built around that conviction. Not a shop, not a factory, but a small atelier — two paper cutters, three calligraphers, one foil press, and a stack of cotton stock imported from a mill that has been making paper the same way since 1922.</p>
+      <p>We start every card with a conversation. Not a form. Not a dropdown. A conversation about who the person is, what the moment was, and what the sender wants them to feel when the envelope opens. From there, everything is composed around that feeling — the words, the typeface, the weight of the paper, the color of the foil, whether there's a ribbon or a wax seal or a small framed print tucked inside the box.</p>
+      <p>The cards we make cost more than greeting cards because they are not greeting cards. They are small, intentional objects, built to outlive the moment that prompted them. A shelf-kept thing. A shoebox-treasured thing. A thing someone's grown child will find, thirty years from now, and understand something about who loved whom.</p>
+      <p>That is, we think, a worthwhile thing to make.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CATALOG — asymmetric editorial grid with real card photos
+     ============================================================ -->
+<section class="catalog" id="catalog">
+  <div class="container">
+    <div class="catalog-head">
+      <h2>The <em>Catalog</em>, Vol. i</h2>
+      <span class="eyebrow">Five collections · Endlessly personalized</span>
+    </div>
+
+    <div class="cat-grid">
+
+      <article class="cat-item span-7 reveal">
+        <div class="frame">
+          <img src="IMG_1414.jpeg" alt="The Custom Story Card — floral foil edition" />
+        </div>
+        <div class="num">Pl. 01</div>
+        <h3>The Custom <em>Story</em> Card</h3>
+        <p>A single moment between you and them — retold across the panels of one card. Inside jokes, shared history, small love letters built to be reread for decades.</p>
+        <div class="meta"><span>From $68</span><span>Begin →</span></div>
+      </article>
+
+      <article class="cat-item span-5 reveal">
+        <div class="frame">
+          <img src="IMG_1412.jpeg" alt="The Milestone Series — handwritten card" />
+        </div>
+        <div class="num">Pl. 02</div>
+        <h3>The Milestone Series</h3>
+        <p>Weddings, anniversaries, graduations — the "yes" moments, composed to be framed after the day ends.</p>
+        <div class="meta"><span>From $42</span><span>Begin →</span></div>
+      </article>
+
+      <article class="cat-item span-4 reveal">
+        <div class="frame">
+          <div class="bg-c art"></div>
+        </div>
+        <div class="num">Pl. 03</div>
+        <h3>Memory Timeline</h3>
+        <p>A life bound in five cards. The first photo, the first home, the first promise — each its own panel.</p>
+        <div class="meta"><span>From $185</span><span>Begin →</span></div>
+      </article>
+
+      <article class="cat-item span-4 reveal">
+        <div class="frame">
+          <div class="bg-d art"></div>
+        </div>
+        <div class="num">Pl. 04</div>
+        <h3>Open-When Sets</h3>
+        <p>Twelve sealed envelopes for the days ahead. A letter for the hard ones. A letter for the proud ones. A gift of time.</p>
+        <div class="meta"><span>From $128</span><span>Begin →</span></div>
+      </article>
+
+      <article class="cat-item span-4 reveal">
+        <div class="frame">
+          <div class="bg-e art"></div>
+        </div>
+        <div class="num">Pl. 05</div>
+        <h3>Appreciation, at Scale</h3>
+        <p>Thoughtful recognition for teams, clients, and founders. Personalized without feeling corporate.</p>
+        <div class="meta"><span>From $12 / card</span><span>Begin →</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     THE CRAFT (process, on dark)
+     ============================================================ -->
+<section class="craft" id="craft">
+  <div class="container">
+    <div class="craft-head">
+      <span class="eyebrow">The Craft</span>
+      <h2>Four hands, four steps, one <em>keepsake</em>.</h2>
+    </div>
+    <div class="craft-grid">
+      <div class="craft-cell reveal">
+        <span class="chapter">i.</span>
+        <h3>The Listening</h3>
+        <p>It begins with a conversation. Who is it for? What do you want them to feel? We ask more than we assume.</p>
+      </div>
+      <div class="craft-cell reveal">
+        <span class="chapter">ii.</span>
+        <h3>The Composing</h3>
+        <p>We write the first draft — or you do. Our concierge shapes, edits, and suggests. Nothing is sent without your approval.</p>
+      </div>
+      <div class="craft-cell reveal">
+        <span class="chapter">iii.</span>
+        <h3>The Making</h3>
+        <p>Cotton paper. Foil press. Debossed edge. Hand-addressed envelope. Every card touched by at least two pairs of hands.</p>
+      </div>
+      <div class="craft-cell reveal">
+        <span class="chapter">iv.</span>
+        <h3>The Sending</h3>
+        <p>Wax-sealed, ribbon-wrapped, keepsake-boxed. Delivered to them, or to you, for the handing-over.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     IN CONVERSATION
+     ============================================================ -->
+<section class="convo">
+  <div class="convo-wrap">
+    <div class="convo-head">
+      <span class="eyebrow">In Conversation</span>
+      <h2>A few <em>questions</em>, answered plainly.</h2>
+    </div>
+
+    <div class="exchange">
+      <span class="q">Q · Why does a card cost what it costs?</span>
+      <p class="a"><strong>—</strong> Because it is not, strictly speaking, a card. It is a small object made by several pairs of hands, written around a specific person, printed on paper that will outlast the moment. We don't price for volume; we price for care.</p>
+    </div>
+
+    <div class="exchange">
+      <span class="q">Q · Can I write the words myself?</span>
+      <p class="a"><strong>—</strong> Most of our clients do, and we'd encourage it. We'll print your words exactly as written, or gently edit with you for rhythm. The point is that the words are yours.</p>
+    </div>
+
+    <div class="exchange">
+      <span class="q">Q · What if I can't find the right words?</span>
+      <p class="a"><strong>—</strong> Then we help. Our concierge and our writing room exist for exactly that reason. Tell us who it's for. We'll offer you three drafts, and you'll pick the one that sounds most like you.</p>
+    </div>
+
+    <div class="exchange">
+      <span class="q">Q · How long does it take?</span>
+      <p class="a"><strong>—</strong> Five to seven days for The Letter. Ten to fourteen for The Keepsake and The Archive, because the hand-finishing takes time. Rush is available; ask.</p>
+    </div>
+
+    <div class="exchange">
+      <span class="q">Q · Do you do corporate orders?</span>
+      <p class="a"><strong>—</strong> Yes — for teams and studios that want to mark something without it feeling like a corporate gesture. Volume pricing begins at twenty-five cards.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COLLECTOR'S NOTES (testimonials)
+     ============================================================ -->
+<section class="notes">
+  <div class="container">
+    <div class="notes-head">
+      <span class="eyebrow">Collector's Notes</span>
+      <h2>From the people who <em>kept</em> them.</h2>
+    </div>
+    <div class="notes-grid">
+
+      <article class="note reveal">
+        <div class="region">Portland, Oregon · Memory Timeline</div>
+        <blockquote>My mother kept the card on her nightstand for two years. After she passed, it was the thing I brought home. That's the word I'd use for Smile &amp; Nod — it makes things you bring home.</blockquote>
+        <div class="byline"><strong>Clare H.</strong> · Commissioned in her mother's 82nd year</div>
+      </article>
+
+      <article class="note reveal">
+        <div class="region">Brooklyn, New York · Anniversary Card</div>
+        <blockquote>I ordered a custom story card for our tenth. He opened it, went quiet, and didn't put it down for the rest of the night. Worth every cent, and then some.</blockquote>
+        <div class="byline"><strong>Devon &amp; Alex</strong> · A card for a decade</div>
+      </article>
+
+      <article class="note reveal">
+        <div class="region">Toronto, Ontario · Corporate Appreciation</div>
+        <blockquote>We sent Smile &amp; Nod cards to forty clients over the holidays. Seven of them texted me photos. No corporate gift has ever landed like that.</blockquote>
+        <div class="byline"><strong>Marisa J.</strong> · Founder, independent agency</div>
+      </article>
+
+      <article class="note reveal">
+        <div class="region">Santa Fe, New Mexico · Open-When Set</div>
+        <blockquote>I made one for my daughter before she left for college. She calls me from her dorm sometimes to say which envelope she opened. That alone has been worth it.</blockquote>
+        <div class="byline"><strong>Helena R.</strong> · Twelve letters, one year</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WRITING ROOM
+     ============================================================ -->
+<section class="writing" id="writing">
+  <div class="container">
+    <div class="writing-grid">
+      <div class="reveal">
+        <span class="eyebrow">The Writing Room</span>
+        <h2>When the <em>words</em> don't come, we'll help find them.</h2>
+        <p>Our guided writing assistant composes gentle first drafts based on the moment, the relationship, and the tone you're reaching for. Edit freely. Keep what rings true. Discard the rest. The goal is never to replace your voice — only to loosen its shoulders.</p>
+        <p>Choose a tone below to preview how it might read.</p>
+        <div class="tones" id="tones">
+          <button class="tone-chip active" data-tone="tender">Tender</button>
+          <button class="tone-chip" data-tone="playful">Playful</button>
+          <button class="tone-chip" data-tone="formal">Considered</button>
+          <button class="tone-chip" data-tone="brief">Brief</button>
+          <button class="tone-chip" data-tone="grateful">Grateful</button>
+        </div>
+      </div>
+
+      <div class="writing-card reveal">
+        <span class="label">Pl. 04 · Composed Preview</span>
+        <div class="composed" id="composed">You taught me how to stay soft in a world that would rather I harden. I don't think I'll ever be able to thank you for that properly. I'll try, though. Over and over, quietly, for as long as I have.</div>
+        <div class="attr">— Draft · Tone: Tender</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RITUAL OF UNWRAPPING — Packages
+     ============================================================ -->
+<section class="ritual">
+  <div class="container">
+    <div class="ritual-head">
+      <span class="eyebrow">The Ritual of Unwrapping</span>
+      <h2>Three keepsake <em>tiers</em>. Each one, considered.</h2>
+      <p>Every package is hand-finished and dispatched in archival packaging — the presentation is as much a part of the gift as the words inside.</p>
+    </div>
+
+    <div class="ritual-table">
+
+      <div class="ritual-col">
+        <span class="tag">The Essentials</span>
+        <h3>The <em>Letter</em></h3>
+        <div class="amt">$42<small>/ card</small></div>
+        <ul>
+          <li>Single personalized card</li>
+          <li>Cotton envelope with liner</li>
+          <li>Hand-trimmed edges</li>
+          <li>Signature wax seal</li>
+          <li>Digital proof before print</li>
+        </ul>
+        <a href="#inquire" class="btn-ink">Begin</a>
+      </div>
+
+      <div class="ritual-col center">
+        <span class="tag">Signature Tier</span>
+        <h3>The <em>Keepsake</em></h3>
+        <div class="amt">$128<small>/ set</small></div>
+        <ul>
+          <li>Custom story card, up to 4 panels</li>
+          <li>Gold or copper foil stamping</li>
+          <li>Ribbon-wrapped presentation</li>
+          <li>Concierge-written option</li>
+          <li>Framed mini-print companion</li>
+        </ul>
+        <a href="#inquire" class="btn-ink">Begin</a>
+      </div>
+
+      <div class="ritual-col">
+        <span class="tag">Heirloom</span>
+        <h3>The <em>Archive</em></h3>
+        <div class="amt">$285<small>/ box</small></div>
+        <ul>
+          <li>Memory Timeline, up to 8 cards</li>
+          <li>Linen-wrapped keepsake box</li>
+          <li>Hand-calligraphed envelopes</li>
+          <li>Full concierge writing service</li>
+          <li>Optional dedication engraving</li>
+        </ul>
+        <a href="#inquire" class="btn-ink">Begin</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INQUIRY FORM (editorial)
+     ============================================================ -->
+<section class="inquire" id="inquire">
+  <div class="container">
+    <div class="inquire-grid">
+      <div class="reveal">
+        <span class="eyebrow">Correspondence</span>
+        <h2>Begin a <em>card</em>. We'll take it from there.</h2>
+        <p>Tell us, in as few or as many words as you like, about the moment you'd like to mark. We'll reply within one business day with pricing, suggestions, and a sense of what's possible.</p>
+        <div class="studio-info">
+          <dl>
+            <dt>Studio</dt><dd>By appointment, Tuesday–Saturday</dd>
+            <dt>Email</dt><dd>hello@smileandnod.co</dd>
+            <dt>Response</dt><dd>Within one business day</dd>
+            <dt>Concierge</dt><dd>Available on request</dd>
+          </dl>
+        </div>
+      </div>
+
+      <form class="editorial-form reveal" id="efForm">
+        <div class="ef-row">
+          <div class="ef-group">
+            <label for="ef-name">Your Name</label>
+            <input type="text" id="ef-name" required placeholder="Jane Morgan" />
+          </div>
+          <div class="ef-group">
+            <label for="ef-email">Email</label>
+            <input type="email" id="ef-email" required placeholder="you@example.com" />
+          </div>
+        </div>
+        <div class="ef-row">
+          <div class="ef-group">
+            <label for="ef-occasion">The Occasion</label>
+            <select id="ef-occasion" required>
+              <option value="">Select an occasion</option>
+              <option>Anniversary</option>
+              <option>Wedding</option>
+              <option>Birthday</option>
+              <option>New Arrival</option>
+              <option>In Memoriam</option>
+              <option>Thank You</option>
+              <option>Corporate</option>
+              <option>Just Because</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="ef-group">
+            <label for="ef-style">Preferred Style</label>
+            <select id="ef-style" required>
+              <option value="">Select a style</option>
+              <option>Minimal &amp; Modern</option>
+              <option>Classic &amp; Refined</option>
+              <option>Warm &amp; Handwritten</option>
+              <option>Editorial &amp; Bold</option>
+              <option>Open to suggestion</option>
+            </select>
+          </div>
+        </div>
+        <div class="ef-group">
+          <label for="ef-story">Tell Us the Story</label>
+          <textarea id="ef-story" required placeholder="Who is it for? What do you want them to feel when they open it?"></textarea>
+        </div>
+        <button type="submit" class="btn-ink">Send Inquiry</button>
+        <div class="ef-success" id="efSuccess">
+          <span class="script">Received.</span>
+          <p>Your story is safe with us. Someone from the studio will write back within one business day.</p>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COLOPHON / FOOTER — inverted logo
+     ============================================================ -->
+<footer class="colophon">
+  <div class="container">
+    <div class="col-grid">
+      <div>
+        <div class="brand-mark">
+          <img src="IMG_1410.jpeg" alt="Smile & Nod" />
+        </div>
+        <p>An atelier of personalized cards and keepsakes — composed slowly, finished by hand, built to be kept.</p>
+      </div>
+      <div>
+        <h4>The Catalog</h4>
+        <ul>
+          <li><a href="#catalog">Custom Story</a></li>
+          <li><a href="#catalog">Milestone Series</a></li>
+          <li><a href="#catalog">Memory Timeline</a></li>
+          <li><a href="#catalog">Open-When Sets</a></li>
+          <li><a href="#catalog">Appreciation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>The Studio</h4>
+        <ul>
+          <li><a href="#manifesto">Manifesto</a></li>
+          <li><a href="#craft">The Craft</a></li>
+          <li><a href="#writing">Writing Room</a></li>
+          <li><a href="#inquire">Inquire</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Pinterest</a></li>
+          <li><a href="#">The Journal</a></li>
+          <li><a href="#">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-bottom">
+      <span>© Smile &amp; Nod · Vol. i</span>
+      <span>Made slowly, on purpose.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script>
+/* Tone chips — swap composed message */
+const messages = {
+  tender:   "You taught me how to stay soft in a world that would rather I harden. I don't think I'll ever be able to thank you for that properly. I'll try, though. Over and over, quietly, for as long as I have.",
+  playful:  "Somehow, against considerable odds and at least three questionable road trips, we made it another year. Here's to ordinary mornings, terrible playlists, and whatever strange miracle keeps convincing you I'm worth the trouble.",
+  formal:   "Few things in a life are earned as quietly as the trust of someone you love. I am grateful for yours, and I intend to deserve it — today, and every ordinary day that follows.",
+  brief:    "I don't say it often enough. Thank you. For all of it. For still being here.",
+  grateful: "You didn't just show up. You stayed. You kept showing up, in all the small unglamorous ways, long after anyone would have blamed you for leaving. That is the thing I'll remember. That is the thing I'm trying, clumsily, to say thank you for."
+};
+const toneLabels = {
+  tender: "Tender", playful: "Playful", formal: "Considered", brief: "Brief", grateful: "Grateful"
+};
+
+const composed = document.getElementById('composed');
+const attr = document.querySelector('.writing-card .attr');
+document.querySelectorAll('.tone-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.tone-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const tone = chip.dataset.tone;
+    composed.style.opacity = 0;
+    setTimeout(() => {
+      composed.textContent = messages[tone];
+      attr.textContent = "— Draft · Tone: " + toneLabels[tone];
+      composed.style.opacity = 1;
+    }, 220);
+  });
+});
+
+/* Editorial form submit */
+const ef = document.getElementById('efForm');
+const efSuccess = document.getElementById('efSuccess');
+ef.addEventListener('submit', (e) => {
+  e.preventDefault();
+  ef.querySelectorAll('input, select, textarea, button').forEach(el => el.style.display = 'none');
+  ef.querySelectorAll('.ef-group, .ef-row').forEach(el => el.style.display = 'none');
+  efSuccess.classList.add('show');
+  efSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+/* Scroll reveal */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
