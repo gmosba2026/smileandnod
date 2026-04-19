@@ -768,104 +768,70 @@ footer { background: var(--charcoal); color: var(--taupe); padding: 80px 0 32px;
      ============================================================ -->
 <script>
 /* ============================================================
-   COLLECTIONS DATA + DYNAMIC IMAGE MATCHING
-   ============================================================
-   Cards are rendered from the CATEGORIES array below.
-   Each category has a `keywords` list — the script scans
-   AVAILABLE_IMAGES and matches any filename containing one
-   of those keywords. No image paths are hardcoded per card.
+   COLLECTIONS — hardcoded cards with direct image paths
    ============================================================ */
-
-// Six collection categories with matching keywords
-const CATEGORIES = [
-  {
-    title: "The Milestone Series",
-    label: "Milestone",
-    description: "Weddings, anniversaries, graduations. The big \"yes\" moments, made to be framed long after the day ends.",
-    price: "From $42",
-    keywords: ["IMG_1414", "milestone"] // falls back to the foil floral card
-  },
-  {
-    title: "Custom Story Cards",
-    label: "Story",
-    description: "A single moment between you and them, retold across the pages — inside jokes, shared history, love letters in miniature.",
-    price: "From $68",
-    keywords: ["IMG_1412", "story"] // handwritten pink card
-  },
-  {
-    title: "Memory Timeline",
-    label: "Timeline",
-    description: "A life, bound in five cards. The first photo, the first home, the first promise — each its own panel, all of them yours.",
-    price: "From $185",
-    keywords: ["memory", "timeline"]
-  },
-  {
-    title: "Open-When Sets",
-    label: "Open When",
-    description: "Twelve sealed envelopes for the days ahead. \"Open when you miss me.\" \"Open when you doubt yourself.\" A gift of time.",
-    price: "From $128",
-    keywords: ["open", "when"]
-  },
-  {
-    title: "Appreciation for Teams",
-    label: "Corporate",
-    description: "Thoughtful recognition at scale. Personalized cards for clients, hires, and milestones — without the corporate stiffness.",
-    price: "From $12/card",
-    keywords: ["team", "appreciation"]
-  },
-  {
-    title: "Just Because",
-    label: "Everyday",
-    description: "The ones sent for no reason at all — which, most of the time, are the ones that matter most.",
-    price: "From $28",
-    keywords: ["just", "because"]
-  }
-];
-
-// Available image files. Smaller cards use /images/, hero photos live at root.
-const AVAILABLE_IMAGES = [
-  { file: "IMG_1414.jpeg", path: "" },
-  { file: "IMG_1412.jpeg", path: "" },
-  { file: "Memory_Timeline.png", path: "images/" },
-  { file: "Open_When_Sets.png", path: "images/" },
-  { file: "Appreciation_for_Teams.png", path: "images/" },
-  { file: "Just_Because.png", path: "images/" }
-];
-
-// Find first image whose filename contains any category keyword
-function findImageForCategory(category) {
-  const match = AVAILABLE_IMAGES.find(img => {
-    const lower = img.file.toLowerCase();
-    return category.keywords.some(kw => lower.includes(kw.toLowerCase()));
-  });
-  return match ? match.path + match.file : null;
-}
-
-// Render cards into #collectionsGrid
 function renderCollections() {
   const grid = document.getElementById("collectionsGrid");
   if (!grid) return;
 
-  grid.innerHTML = CATEGORIES.map(cat => {
-    const src = findImageForCategory(cat);
-    const imageMarkup = src
-      ? `<img loading="lazy" decoding="async" src="${src}" alt="${cat.title}" onerror="this.style.display='none'"/>`
-      : `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--blush),var(--clay));color:#fff;font-family:var(--script);font-size:48px;">S&amp;N</div>`;
+  const cards = [
+    {
+      img:   "IMG_1414.jpg",
+      label: "Milestone",
+      title: "The Milestone Series",
+      desc:  "Weddings, anniversaries, graduations. The big \"yes\" moments, made to be framed long after the day ends.",
+      price: "From $42"
+    },
+    {
+      img:   "IMG_1412.jpg",
+      label: "Story",
+      title: "Custom Story Cards",
+      desc:  "A single moment between you and them, retold across the pages — inside jokes, shared history, love letters in miniature.",
+      price: "From $68"
+    },
+    {
+      img:   "images/Memory_Timeline.png",
+      label: "Timeline",
+      title: "Memory Timeline",
+      desc:  "A life, bound in five cards. The first photo, the first home, the first promise — each its own panel, all of them yours.",
+      price: "From $185"
+    },
+    {
+      img:   "images/Open_When_Sets.png",
+      label: "Open When",
+      title: "Open-When Sets",
+      desc:  "\"Open when you miss me.\" \"Open when you doubt yourself.\" Twelve sealed envelopes. A gift of time.",
+      price: "From $128"
+    },
+    {
+      img:   "images/Appreciation_for_Teams.png",
+      label: "Corporate",
+      title: "Appreciation for Teams",
+      desc:  "Thoughtful recognition at scale. Personalized cards for clients, hires, and milestones — without the corporate stiffness.",
+      price: "From $12/card"
+    },
+    {
+      img:   "images/Just_Because.png",
+      label: "Everyday",
+      title: "Just Because",
+      desc:  "The ones sent for no reason at all — which, most of the time, are the ones that matter most.",
+      price: "From $28"
+    }
+  ];
 
-    return `
-      <div class="card reveal">
-        <div class="card-img">
-          ${imageMarkup}
-          <span class="label">${cat.label}</span>
-        </div>
-        <div class="card-body">
-          <h3>${cat.title}</h3>
-          <p>${cat.description}</p>
-          <div class="price"><span>${cat.price}</span><span class="arrow">→</span></div>
-        </div>
+  grid.innerHTML = cards.map(c => `
+    <div class="card reveal">
+      <div class="card-img">
+        <img src="${c.img}" alt="${c.title}" loading="lazy" decoding="async" />
+        <span class="label">${c.label}</span>
       </div>
-    `;
-  }).join("");
+      <div class="card-body">
+        <h3>${c.title}</h3>
+        <p>${c.desc}</p>
+        <div class="price"><span>${c.price}</span><span class="arrow">→</span></div>
+      </div>
+    </div>
+  `).join("");
 }
 
 /* FAQ accordion */
