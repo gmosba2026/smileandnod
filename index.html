@@ -257,139 +257,41 @@ section { padding: 110px 0; position: relative; }
 @media (max-width: 900px) { .steps { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
 
-/* WRITING ASSISTANT SECTION */
+/* AI HELPER */
 .ai-helper {
   background: linear-gradient(135deg, rgba(233,210,197,0.5), rgba(201,185,168,0.35)), var(--ivory);
 }
-.writing-wrap { max-width: 900px; margin: 0 auto; }
-.writing-intro { text-align: center; margin-bottom: 48px; }
-.writing-intro h2 { font-size: clamp(32px, 3.6vw, 46px); margin-bottom: 16px; }
-.writing-intro p { color: var(--muted); font-size: 17px; max-width: 580px; margin: 0 auto; }
-
-/* Category buttons */
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  margin-bottom: 32px;
+.ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.ai-grid h2 { font-size: clamp(32px, 3.6vw, 46px); margin-bottom: 22px; }
+.ai-grid p { color: var(--muted); font-size: 17px; margin-bottom: 22px; }
+.prompts { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.prompts li {
+  padding: 14px 20px; background: var(--cream); border-radius: 999px;
+  font-size: 14px; color: var(--cocoa); border: 1px solid var(--line);
+  transition: all .25s ease; cursor: pointer;
 }
-@media (max-width: 860px) { .category-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 520px) { .category-grid { grid-template-columns: 1fr 1fr; } }
-
-.cat-btn {
-  padding: 16px 12px;
-  background: var(--cream);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  font-family: var(--sans);
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  color: var(--cocoa);
-  cursor: pointer;
-  text-align: center;
-  line-height: 1.4;
-  transition: all .25s ease;
-  position: relative;
+.prompts li:hover { background: var(--ivory); transform: translateX(4px); }
+.prompts li::before { content: "✧"; color: var(--clay); margin-right: 10px; }
+.ai-card {
+  background: var(--cream); border-radius: var(--radius-lg);
+  padding: 36px; box-shadow: var(--shadow-md); border: 1px solid var(--line);
 }
-.cat-btn:hover {
-  background: var(--ivory);
-  border-color: var(--clay);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
+.ai-card .tag {
+  font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--clay-deep); margin-bottom: 14px; display: block;
 }
-.cat-btn.active {
-  background: var(--charcoal);
-  border-color: var(--charcoal);
-  color: var(--ivory);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+.ai-card .preview {
+  font-family: var(--serif); font-size: 22px; line-height: 1.5; color: var(--charcoal);
+  padding: 24px; background: var(--ivory); border-radius: var(--radius-md);
+  border: 1px solid var(--line); min-height: 160px; transition: opacity .4s ease;
 }
-.cat-btn .cat-icon {
-  display: block;
-  font-size: 20px;
-  margin-bottom: 8px;
+.ai-card .regen {
+  margin-top: 18px; font-size: 12px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--clay-deep);
+  background: none; border: none; padding: 0;
 }
-
-/* Message preview card */
-.msg-card {
-  background: var(--cream);
-  border-radius: var(--radius-lg);
-  padding: 40px;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-md);
-  min-height: 220px;
-  display: flex;
-  flex-direction: column;
-}
-.msg-card .msg-label {
-  font-family: var(--sans);
-  font-size: 10px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--clay-deep);
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.msg-card .msg-label::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--line);
-}
-.msg-card .msg-text {
-  font-family: var(--serif);
-  font-size: clamp(18px, 2.2vw, 23px);
-  line-height: 1.6;
-  color: var(--charcoal);
-  flex: 1;
-  transition: opacity .35s ease, transform .35s ease;
-}
-.msg-card .msg-text.fading {
-  opacity: 0;
-  transform: translateY(6px);
-}
-.msg-card .msg-placeholder {
-  font-family: var(--serif);
-  font-size: 18px;
-  color: var(--taupe);
-  font-style: italic;
-  flex: 1;
-  display: flex;
-  align-items: center;
-}
-.msg-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 24px;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.msg-footer .msg-category-name {
-  font-family: var(--sans);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.btn-another {
-  font-family: var(--sans);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--clay-deep);
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: color .2s ease;
-}
-.btn-another:hover { color: var(--charcoal); text-decoration: underline; }
-.btn-another:disabled { opacity: 0.35; cursor: default; text-decoration: none; }
+.ai-card .regen:hover { text-decoration: underline; }
+@media (max-width: 860px) { .ai-grid { grid-template-columns: 1fr; gap: 48px; } }
 
 /* WHY */
 .why { background: var(--ivory); }
@@ -660,42 +562,23 @@ footer { background: var(--charcoal); color: var(--taupe); padding: 80px 0 32px;
 <!-- AI HELPER -->
 <section class="ai-helper">
   <div class="container">
-    <div class="writing-wrap reveal">
-      <div class="writing-intro">
+    <div class="ai-grid">
+      <div class="reveal">
         <span class="eyebrow">Words, When You Need Them</span>
         <h2>Never blank on what to say again.</h2>
-        <p>Choose a moment below. We'll suggest a beautifully composed message — click again to see another.</p>
+        <p>Our guided writing assistant gently helps you find the right words — drawing from a quiet library of prompts, tones, and meaningful phrasings. You stay in the driver's seat. We just open the door.</p>
+        <ul class="prompts" id="promptList">
+          <li data-msg="For the friend who showed up when no one else did, and never asked for credit — thank you, for being the quiet constant I didn't know I needed.">A quiet thank-you to a friend</li>
+          <li data-msg="To the one I get to build a life with: here's to ordinary mornings, questionable playlists, and every year still feeling like it's just beginning.">A love note for an anniversary</li>
+          <li data-msg="You didn't just teach me. You showed me what attention, patience, and grace could look like. I carry that with me, still.">A message of gratitude for a mentor</li>
+          <li data-msg="Welcome, little one. The world gets softer the moment you arrive in it. We've been waiting for you — take your time.">A welcome for a new arrival</li>
+          <li data-msg="You did something hard. You did it slowly, honestly, and without needing anyone to watch. That is the kind of strength worth celebrating.">Celebrating a personal milestone</li>
+        </ul>
       </div>
-
-      <!-- 5 category buttons -->
-      <div class="category-grid" id="categoryGrid">
-        <button class="cat-btn" data-category="friendThankYou" aria-pressed="false">
-          <span class="cat-icon">✦</span>A quiet thank‑you to a friend
-        </button>
-        <button class="cat-btn" data-category="anniversaryLove" aria-pressed="false">
-          <span class="cat-icon">❧</span>A love note for an anniversary
-        </button>
-        <button class="cat-btn" data-category="mentorGratitude" aria-pressed="false">
-          <span class="cat-icon">✎</span>Gratitude for a mentor
-        </button>
-        <button class="cat-btn" data-category="newArrivalWelcome" aria-pressed="false">
-          <span class="cat-icon">❀</span>A welcome for a new arrival
-        </button>
-        <button class="cat-btn" data-category="personalMilestone" aria-pressed="false">
-          <span class="cat-icon">✧</span>Celebrating a milestone
-        </button>
-      </div>
-
-      <!-- Message preview card -->
-      <div class="msg-card" id="msgCard">
-        <span class="msg-label">Suggested message</span>
-        <div class="msg-text" id="msgText">
-          <span class="msg-placeholder">Select a category above to see a composed message.</span>
-        </div>
-        <div class="msg-footer">
-          <span class="msg-category-name" id="msgCategoryName"></span>
-          <button class="btn-another" id="btnAnother" disabled>Show another message →</button>
-        </div>
+      <div class="ai-card reveal">
+        <span class="tag">Preview · Composed Message</span>
+        <div class="preview" id="messagePreview">Click a prompt to preview a message your card could hold.</div>
+        <button class="regen" onclick="cycleMessage()">Inspire me with another →</button>
       </div>
     </div>
   </div>
@@ -963,28 +846,83 @@ function renderCollections() {
   const grid = document.getElementById("collectionsGrid");
   if (!grid) return;
 
-  grid.innerHTML = CATEGORIES.map(cat => {
-    const src = findImageForCategory(cat);
-    const imageMarkup = src
-      ? `<img loading="lazy" decoding="async" src="${src}" alt="${cat.title}" onerror="this.style.display='none'"/>`
-      : `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--blush),var(--clay));color:#fff;font-family:var(--script);font-size:48px;">S&amp;N</div>`;
-
-    return `
-      <div class="card reveal">
-        <div class="card-img">
-          ${imageMarkup}
-          <span class="label">${cat.label}</span>
-        </div>
-        <div class="card-body">
-          <h3>${cat.title}</h3>
-          <p>${cat.description}</p>
-          <div class="price"><span>${cat.price}</span><span class="arrow">→</span></div>
-        </div>
+  // Hardcoded cards — image paths match the actual files in the repo
+  grid.innerHTML = `
+    <div class="card reveal">
+      <div class="card-img">
+        <img src="IMG_1414.jpg" loading="eager" alt="The Milestone Series" onerror="this.style.display='none'" />
+        <span class="label">Milestone</span>
       </div>
-    `;
-  }).join("");
+      <div class="card-body">
+        <h3>The Milestone Series</h3>
+        <p>Weddings, anniversaries, graduations. The big "yes" moments, made to be framed long after the day ends.</p>
+        <div class="price"><span>From $42</span><span class="arrow">→</span></div>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-img">
+        <img src="IMG_1412.jpg" loading="eager" alt="Custom Story Cards" onerror="this.style.display='none'" />
+        <span class="label">Story</span>
+      </div>
+      <div class="card-body">
+        <h3>Custom Story Cards</h3>
+        <p>A single moment between you and them, retold across the pages — inside jokes, shared history, love letters in miniature.</p>
+        <div class="price"><span>From $68</span><span class="arrow">→</span></div>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-img">
+        <img src="images/Memory_Timeline.png" loading="lazy" alt="Memory Timeline" onerror="this.style.display='none'" />
+        <span class="label">Timeline</span>
+      </div>
+      <div class="card-body">
+        <h3>Memory Timeline</h3>
+        <p>A life, bound in five cards. The first photo, the first home, the first promise — each its own panel, all of them yours.</p>
+        <div class="price"><span>From $185</span><span class="arrow">→</span></div>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-img">
+        <img src="images/Open_When_Sets.png" loading="lazy" alt="Open-When Sets" onerror="this.style.display='none'" />
+        <span class="label">Open When</span>
+      </div>
+      <div class="card-body">
+        <h3>Open-When Sets</h3>
+        <p>"Open when you miss me." "Open when you doubt yourself." Twelve sealed envelopes. A gift of time.</p>
+        <div class="price"><span>From $128</span><span class="arrow">→</span></div>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-img">
+        <img src="images/Appreciation_for_Teams.png" loading="lazy" alt="Appreciation for Teams" onerror="this.style.display='none'" />
+        <span class="label">Corporate</span>
+      </div>
+      <div class="card-body">
+        <h3>Appreciation for Teams</h3>
+        <p>Thoughtful recognition at scale. Personalized cards for clients, hires, and milestones — without the corporate stiffness.</p>
+        <div class="price"><span>From $12/card</span><span class="arrow">→</span></div>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-img">
+        <img src="images/Just_Because.png" loading="lazy" alt="Just Because" onerror="this.style.display='none'" />
+        <span class="label">Everyday</span>
+      </div>
+      <div class="card-body">
+        <h3>Just Because</h3>
+        <p>The ones sent for no reason at all — which, most of the time, are the ones that matter most.</p>
+        <div class="price"><span>From $28</span><span class="arrow">→</span></div>
+      </div>
+    </div>
+  `;
 }
 
+/* FAQ accordion */
 /* FAQ accordion */
 function setupFAQ() {
   document.querySelectorAll('.faq-item').forEach(item => {
@@ -1030,165 +968,32 @@ function setupInquiryForm() {
   });
 }
 
-/* ============================================================
-   WRITING ASSISTANT — message library + interaction logic
-   ============================================================
-   To edit message content: update the arrays inside
-   messageLibrary below. Each array holds 10 messages.
-   ============================================================ */
-
-const messageLibrary = {
-
-  // ── 1. A quiet thank-you to a friend ───────────────────────
-  friendThankYou: [
-    "For the friend who showed up when no one else did, and never asked for credit — thank you, for being the quiet constant I didn't know I needed.",
-    "There are people who change your life loudly, and people who change it quietly. You are the second kind. I'm not sure I've ever properly said thank you for that — so here it is.",
-    "You didn't flinch when things got hard. You showed up, made tea, and asked the right questions. I hope you know how rare that is, and how much it meant.",
-    "Thank you for being the kind of friend who doesn't need an explanation. Who just knows. Who shows up. I hope I get to be that for you one day — you've shown me exactly how.",
-    "Some friendships are loud and vivid. Ours is warm and steady, and that is the kind I want to hold onto. Thank you for being that for me, for as long as you have.",
-    "I keep thinking of the small things — the texts at midnight, the coffee you brought without being asked, the way you never made me feel like a burden. Thank you for all of those small things.",
-    "You are one of the few people I know who gives without keeping score. I notice it. I am grateful for it. I want you to know that it has made a real difference in my life.",
-    "What I want to say is simple, but it deserves more than a text: thank you for being my person. The one I call first. The one who picks up. I don't take that lightly.",
-    "Not everyone gets a friend like you — someone who listens without judgment and shows up without being asked. I got lucky. I know it. And I wanted you to know I know it.",
-    "The older I get, the more I understand how rare genuine friendship is. You are mine. And for that, I am more grateful than I know how to properly express."
-  ],
-
-  // ── 2. A love note for an anniversary ──────────────────────
-  anniversaryLove: [
-    "To the one I get to build a life with: here's to ordinary mornings, questionable playlists, and every year still feeling like it's just beginning.",
-    "I didn't know, when this all started, that I was choosing my favorite person. I know now. Happy anniversary — thank you for being worth every single ordinary day.",
-    "Here is what I want you to know, on this day, after all this time: I would choose you again. Without hesitation. A hundred times over.",
-    "Another year of figuring it out together. Of laughing at things we probably shouldn't. Of choosing each other on the days when choosing is easy — and on the days when it isn't. I'm glad it's you.",
-    "The best thing I've ever done is decide to stay. To show up, again and again, to the life we're building. Thank you for making that so easy to want.",
-    "What we have isn't perfect. It's better than that — it's real, and warm, and ours. Happy anniversary to the person who makes ordinary feel like a gift.",
-    "Some anniversaries are marked with big gestures. This one I want to mark with honesty: I love our life. I love the way you make me feel at home in it. Thank you for that.",
-    "Time is strange — it moves slowly and then all at once. But every year I spend with you feels like something I want more of. Happy anniversary. Here's to more.",
-    "I don't say it enough, so let me say it here: you are the best part of my days. The one I tell things to first. The one whose face I look for in every room. Happy anniversary.",
-    "To the person who has seen me at every version of myself and stayed — thank you. You have no idea how much that means, or maybe you do. Either way: I love you, and I'm glad we're here."
-  ],
-
-  // ── 3. Gratitude for a mentor ───────────────────────────────
-  mentorGratitude: [
-    "You didn't just teach me. You showed me what attention, patience, and grace could look like. I carry that with me still.",
-    "There is a version of my life where I didn't meet you, and I don't like to think about it. You changed what I thought was possible. Thank you for that.",
-    "The lessons you taught me weren't only about work — they were about how to carry yourself, how to treat people, how to do hard things with dignity. I think about that constantly.",
-    "You took my potential seriously before I did. That is a gift I am still unwrapping. Thank you for believing in something you had no obligation to believe in.",
-    "I have learned from many people, but very few have made me want to be better. You are one of those rare people. I hope you know the weight of what that means.",
-    "What you gave me wasn't just knowledge — it was confidence. The kind that comes from having someone truly see what you're capable of and say so. I won't forget it.",
-    "You had every reason to be dismissive. You chose to be generous instead. That choice shaped the way I try to treat everyone who comes to me looking for guidance.",
-    "I think about a particular piece of advice you gave me — I won't repeat it here, because you know the one — and I want you to know it changed something real in me.",
-    "Thank you for the honest conversations. The ones that were hard to hear but needed to be said. Those were the most valuable things you ever gave me.",
-    "Some teachers give you information. You gave me something harder to come by: a model for how to move through the world with intention. I am deeply grateful."
-  ],
-
-  // ── 4. A welcome for a new arrival ─────────────────────────
-  newArrivalWelcome: [
-    "Welcome, little one. The world gets softer the moment you arrive in it. We've been waiting for you — take your time.",
-    "You are here. You are real. And already, somehow, it feels like you've always been part of us. Welcome to the family — we've saved you a spot.",
-    "There is so much we want to show you. So many things we hope you'll love. For now, just know this: you are wanted, and you are already so deeply loved.",
-    "Before you could speak, before you could see clearly, you already had a whole room full of people whose hearts changed completely because of you. Welcome, little one.",
-    "We don't have everything figured out — no one does. But we have each other, and now we have you. And that feels like more than enough. Welcome to the world.",
-    "The moment we heard you were coming, everything rearranged itself around that fact. We didn't know it at the time, but you've been making us better for a while now. Welcome.",
-    "You are the answer to a wish we didn't quite know how to make. Welcome, sweet one. You are already the best thing about this year.",
-    "Everyone will want to hold you, tell you stories, and give you things. What we most want to give you is this: a life full of love, and the knowledge that you are never, ever alone.",
-    "We made a room for you. We've been making space for you, actually, for longer than that — in our schedules, our hearts, our plans for the future. Welcome. We are so glad you're here.",
-    "You've barely arrived and already you've made everything feel more important and more tender. That is a remarkable thing to do. Welcome to all of it, little one."
-  ],
-
-  // ── 5. Celebrating a personal milestone ────────────────────
-  personalMilestone: [
-    "You did something hard. You did it slowly, honestly, and without needing anyone to watch. That is the kind of strength worth celebrating.",
-    "Not everyone could have done what you did. I want to make sure you hear that clearly, from someone who watched: what you accomplished matters, and so does how you did it.",
-    "There will be days when this milestone feels small in the rearview. I hope you carry this version of yourself — the one who wasn't sure but kept going — with you for a long time.",
-    "You set out to do something, and you did it. I know how much that sounds like a simple sentence. I know how many hard days are inside it. Congratulations.",
-    "I have been quietly proud of you for a while now. This felt like the right moment to stop being quiet about it. What you've done is extraordinary. Truly.",
-    "The world won't always stop to notice when you do something brave. I want to be someone who stops. What you've accomplished is real, and it deserves to be marked.",
-    "Here is what I hope you know: the version of you who showed up and did this thing — this difficult, meaningful, courageous thing — is the version you were always becoming.",
-    "Progress that no one else could see is still progress. Work that no one else could feel is still real. I see it. I felt it. I am so proud of you.",
-    "Some achievements come with applause. Others are quieter — known only to you and the people who love you. This is one of those. And it counts just as much, maybe more.",
-    "You did the thing you said you would do. In a world full of abandoned intentions, that is something worth celebrating. I am so glad I get to know you while you're doing it."
-  ]
-};
-
-/* ── Interaction logic ────────────────────────────────────────
-   Tracks the last shown index per category so the same
-   message is never shown twice in a row.
-   ─────────────────────────────────────────────────────────── */
-
-// Category display labels (used in msg-footer)
-const categoryLabels = {
-  friendThankYou:     "A quiet thank-you to a friend",
-  anniversaryLove:    "A love note for an anniversary",
-  mentorGratitude:    "Gratitude for a mentor",
-  newArrivalWelcome:  "A welcome for a new arrival",
-  personalMilestone:  "Celebrating a personal milestone"
-};
-
-// Tracks the last index shown per category to avoid immediate repeats
-const lastShown = {
-  friendThankYou: -1, anniversaryLove: -1,
-  mentorGratitude: -1, newArrivalWelcome: -1, personalMilestone: -1
-};
-
-let activeCategory = null;
-
-function getRandomMessage(category) {
-  const pool = messageLibrary[category];
-  const last = lastShown[category];
-  let idx;
-  // Avoid repeating the last message shown (if pool > 1)
-  do { idx = Math.floor(Math.random() * pool.length); }
-  while (pool.length > 1 && idx === last);
-  lastShown[category] = idx;
-  return pool[idx];
-}
-
-function showMessage(category, animate = true) {
-  const msgText   = document.getElementById("msgText");
-  const catName   = document.getElementById("msgCategoryName");
-  const btnAnother = document.getElementById("btnAnother");
-  const msg = getRandomMessage(category);
-
-  if (animate) {
-    msgText.classList.add("fading");
-    setTimeout(() => {
-      msgText.innerHTML = msg;
-      msgText.classList.remove("fading");
-    }, 280);
-  } else {
-    msgText.innerHTML = msg;
-  }
-
-  catName.textContent = categoryLabels[category];
-  btnAnother.disabled = false;
-}
-
-function setupWritingAssistant() {
-  const buttons = document.querySelectorAll(".cat-btn");
-  const btnAnother = document.getElementById("btnAnother");
-
-  // Category button clicks
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const category = btn.dataset.category;
-
-      // Update active state on buttons
-      buttons.forEach(b => { b.classList.remove("active"); b.setAttribute("aria-pressed","false"); });
-      btn.classList.add("active");
-      btn.setAttribute("aria-pressed","true");
-
-      activeCategory = category;
-      showMessage(category, true);
+/* Message preview prompts */
+function setupPrompts() {
+  const preview = document.getElementById('messagePreview');
+  const prompts = document.querySelectorAll('#promptList li');
+  prompts.forEach(li => {
+    li.addEventListener('click', () => {
+      preview.style.opacity = 0;
+      setTimeout(() => {
+        preview.textContent = li.dataset.msg;
+        preview.style.opacity = 1;
+      }, 200);
     });
   });
-
-  // "Show another message" button
-  btnAnother.addEventListener("click", () => {
-    if (activeCategory) showMessage(activeCategory, true);
-  });
 }
 
-function setupPrompts() { setupWritingAssistant(); }
+let msgIndex = 0;
+function cycleMessage() {
+  const prompts = document.querySelectorAll('#promptList li');
+  const preview = document.getElementById('messagePreview');
+  msgIndex = (msgIndex + 1) % prompts.length;
+  preview.style.opacity = 0;
+  setTimeout(() => {
+    preview.textContent = prompts[msgIndex].dataset.msg;
+    preview.style.opacity = 1;
+  }, 200);
+}
 
 /* Scroll reveal */
 function setupReveal() {
