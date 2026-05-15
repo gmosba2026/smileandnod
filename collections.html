@@ -416,9 +416,9 @@ function renderCollections() {
   const cardsHTML = CATEGORIES.map(category => {
     const imagePath = findImageForCategory(category, AVAILABLE_IMAGES);
 
-    // If image was matched, use <img>. Otherwise show a placeholder.
+    // If image was matched, use <img loading="lazy" decoding="async">. Otherwise show a placeholder.
     const imageMarkup = imagePath
-      ? `<img src="${imagePath}" alt="${category.title}"
+      ? `<img loading="lazy" decoding="async" src="${imagePath}" alt="${category.title}"
               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
          <div class="placeholder" style="display:none;">
            <div class="mark">S&amp;N</div>
